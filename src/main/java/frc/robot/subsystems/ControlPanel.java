@@ -24,6 +24,7 @@ import com.revrobotics.ColorMatchResult;
 import com.revrobotics.ColorSensorV3;
 
 import edu.wpi.first.wpilibj.I2C;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -105,14 +106,14 @@ spinMotor = new WPI_TalonSRX(8);
     // here. Call these from Commands.
 
 public void spin() {
-    spinMotor.set(.5);
+    spinMotor.set(1);
 }
 
 public void stop() {
     spinMotor.set(0);
 }
 
-public boolean colormatch() {
+public boolean colormatch(String gameData) {
      /**
      * The method GetColor() returns a normalized color value from the sensor and can be
      * useful if outputting the color to an RGB LED or similar. To
@@ -128,12 +129,11 @@ public boolean colormatch() {
     /**
      * Run the color match algorithm on our detected color
      */
-    String colorString;
+    System.out.println("gamedata = " + gameData);
     ColorMatchResult match = m_colorMatcher.matchClosestColor(detectedColor);
-
+    String colorString;
     if (match.color == kBlueTarget) {
       colorString = "Blue";
-      return true;
     } else if (match.color == kRedTarget) {
       colorString = "Red";
     } else if (match.color == kGreenTarget) {
@@ -143,7 +143,72 @@ public boolean colormatch() {
     } else {
       colorString = "Unknown";
     }
-
+    switch (gameData.charAt(0))
+    {
+      case 'B' :
+        //Blue case code
+        if (match.color == kBlueTarget) {
+          SmartDashboard.putString("Matched Color", "Blue");
+            return true;    
+        }
+        break; 
+      case 'G' :
+        //Green case code
+        if (match.color == kGreenTarget) {
+          SmartDashboard.putString("Matched Color", "Green");
+          return true;
+        }
+        break;
+      
+      case 'R' :
+        //Red case code
+        if (match.color == kRedTarget) {
+          SmartDashboard.putString("Matched Color", "Red");
+          return true;
+        }
+        break;
+    
+      case 'Y' :
+        //Yellow case code
+        if (match.color == kYellowTarget) {
+          SmartDashboard.putString(" Matched Color", "Yellow");
+          return true;
+        }
+        break;
+      default :
+        //This is corrupt data
+        break;
+    }
+    SmartDashboard.putNumber("Color", detectedColor.red);
+    SmartDashboard.putString("Detected Color", gameData);
+    SmartDashboard.putString("Color Detected", colorString);
     return false;
-}
-}
+   }
+
+   public void colorCounter(){
+     /**Method used to count how many times the color sensor reads a color
+      * Set up to count when the starting color matches the current color being read, 
+      the current color is equal to Rcolor
+      When Rcolor is equal to previous color do nothing
+      when Rcolor is equal to starting color, count one rotation
+      color count is less than or equal to 7
+      */
+      int colorCount = 0;
+      Color prevColor = null;
+      Color readColor = null;
+      Color startingColor = null;
+      
+      readColor =  m_colorSensor.getColor();
+      startingColor = readColor;
+      while (colorCount <= 7){
+        readColor =  m_colorSensor.getColor();
+        if (readColor != prevColor){
+          if (readColor == startingColor){
+            colorCount = colorCount +1;
+          }
+        }
+        prevColor = readColor;
+      }
+    }
+  }
+   
