@@ -61,6 +61,7 @@ public class SpinMotor extends Command {
         Robot.controlPanel.stop();
     }
 
+
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     @Override

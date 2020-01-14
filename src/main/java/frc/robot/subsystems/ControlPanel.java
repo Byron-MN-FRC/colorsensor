@@ -106,12 +106,12 @@ spinMotor = new WPI_TalonSRX(8);
     // here. Call these from Commands.
 
 public void spin() {
-    spinMotor.set(1);
+    spinMotor.set(.8);
 }
 
 public void stop() {
     spinMotor.set(0);
-}
+}  
 
 public boolean colormatch(String gameData) {
      /**
@@ -205,6 +205,7 @@ public boolean colormatch(String gameData) {
         if (readColor != prevColor){
           if (readColor == startingColor){
             colorCount = colorCount +1;
+            colorCount = 7; stop();
           }
         }
         prevColor = readColor;
