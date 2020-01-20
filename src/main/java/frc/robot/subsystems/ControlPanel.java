@@ -197,12 +197,12 @@ spinMotor = new WPI_TalonSRX(15);
 
    startingColor = m_colorSensor.getColor();
    startingColorStr = getColorString(startingColor);
-   while (colorCount <=2) {
+   while (colorCount <=20) {
      readColor = m_colorSensor.getColor();
      readColorStr = getColorString(readColor);
       if (readColorStr.equals(startingColorStr));
         colorCount = colorCount + 1;
-        if (colorCount + 1 >=1);
+        if (colorCount + 1 >= 20);
         System.out.println("It's Working! It's Working!");
       
    }
