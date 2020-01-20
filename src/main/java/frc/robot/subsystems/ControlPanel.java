@@ -255,4 +255,22 @@ spinMotor = new WPI_TalonSRX(15);
     }
     return colorString;
   }
+
+
+  private char GetColorChar(Color color){
+    ColorMatchResult match = m_colorMatcher.matchClosestColor(detectedColor);
+    char colorChar;
+    if (match.color == kBlueTarget) {
+      colorChar = 'B';
+    } else if (match.color == kRedTarget) {
+      colorChar = 'R';
+    } else if (match.color == kGreenTarget) {
+      colorChar = 'G';
+    } else if (match.color == kYellowTarget) {
+      colorChar = 'Y';
+    } else {
+      colorChar = 'U';
+    }
+    return colorChar;
+  }
 }
