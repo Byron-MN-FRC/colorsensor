@@ -258,7 +258,7 @@ spinMotor = new WPI_TalonSRX(15);
 
 
   private char GetColorChar(Color color){
-    ColorMatchResult match = m_colorMatcher.matchClosestColor(detectedColor);
+    ColorMatchResult match = m_colorMatcher.matchClosestColor(color);
     char colorChar;
     if (match.color == kBlueTarget) {
       colorChar = 'B';
