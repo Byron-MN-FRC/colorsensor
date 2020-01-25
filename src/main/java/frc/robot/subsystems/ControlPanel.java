@@ -111,11 +111,11 @@ spinMotor = new WPI_TalonSRX(15);
   // here. Call these from Commands.
 
   public void spin() {
-    spinMotor.set(.5);
+    spinMotor.set(.4);
   }
 
   public void spinCount() {
-    spinMotor.set(.5);
+    spinMotor.set(.4);
   }
 
   public void stop() {
@@ -140,30 +140,40 @@ spinMotor = new WPI_TalonSRX(15);
      */
     System.out.println("gamedata = " + gameData);
     ColorMatchResult match = m_colorMatcher.matchClosestColor(detectedColor);
-    String colorString;
-    if (match.color == kBlueTarget) {
-      colorString = "Blue";
-    } else if (match.color == kRedTarget) {
-      colorString = "Red";
-    } else if (match.color == kGreenTarget) {
-      colorString = "Green";
-    } else if (match.color == kYellowTarget) {
-      colorString = "Yellow";
-    } else {
-      colorString = "Unknown";
-    }
+    String colorString = getColorString(match.color);
+  //  if (match.color == kBlueTarget) {
+    //   colorString = "Blue";
+    // } else if (match.color == kRedTarget) {
+    //   colorString = "Red";
+    // } else if (match.color == kGreenTarget) {
+    //   colorString = "Green";
+    // } else if (match.color == kYellowTarget) {
+    //   colorString = "Yellow";
+    // } else {
+    //   colorString = "Unknown";
+    // }
+
+  //  SmartDashboard.putNumber("Color", detectedColor.red);
+    SmartDashboard.putString("Game Color", gameData);
+    SmartDashboard.putString("Color Detected", colorString);
+    SmartDashboard.putNumber("Color Confidence", match.confidence);
+   // SmartDashboard.putNumber("Red", match.color.);
+    SmartDashboard.putNumber("Green", detectedColor.green);
+    SmartDashboard.putNumber("Blue", detectedColor.blue);
+
+
     switch (gameData.charAt(0)) {
     case 'B':
       // Blue case code
       if (match.color == kBlueTarget) {
-        SmartDashboard.putString("Matched Color", "Blue");
+        SmartDashboard.putString("Color seen", "Blue");
         return true;
       }
       break;
     case 'G':
       // Green case code
       if (match.color == kGreenTarget) {
-        SmartDashboard.putString("Matched Color", "Green");
+        SmartDashboard.putString("Color seen", "Green");
         return true;
       }
       break;
@@ -171,7 +181,7 @@ spinMotor = new WPI_TalonSRX(15);
     case 'R':
       // Red case code
       if (match.color == kRedTarget) {
-        SmartDashboard.putString("Matched Color", "Red");
+        SmartDashboard.putString("Color seen", "Red");
         return true;
       }
       break;
@@ -179,7 +189,7 @@ spinMotor = new WPI_TalonSRX(15);
     case 'Y':
       // Yellow case code
       if (match.color == kYellowTarget) {
-        SmartDashboard.putString(" Matched Color", "Yellow");
+        SmartDashboard.putString("Color seen", "Yellow");
         return true;
       }
       break;
@@ -187,9 +197,6 @@ spinMotor = new WPI_TalonSRX(15);
       // This is corrupt data
       break;
     }
-    SmartDashboard.putNumber("Color", detectedColor.red);
-    SmartDashboard.putString("Detected Color", gameData);
-    SmartDashboard.putString("Color Detected", colorString);
     return false;
   }
 
@@ -243,7 +250,7 @@ spinMotor = new WPI_TalonSRX(15);
   }
      // motor config taken from MotionMagic example at
     // https://github.com/CrossTheRoadElec/Phoenix-Examples-Languages
-    private void motorConfig() {
+    public void motorConfig() {
       /* Factory default hardware to prevent unexpected behavior */
       spinMotor.configFactoryDefault();
 
