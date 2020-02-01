@@ -8,9 +8,10 @@
 // update. Deleting the comments indicating the section will prevent
 // it from being updated in the future.
 
-
 package frc.robot.commands;
+
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 
 /**
@@ -47,7 +48,7 @@ public class spinCtrlPanel extends Command {
     @Override
     protected void execute() {
         Robot.controlPanel.colorCounter();
-        Robot.controlPanel.spin();
+        Robot.controlPanel.spin(SmartDashboard.getNumber("MotorSpeed",0.4));
     }
 
     // Make this return true when this Command no longer needs to run execute()
