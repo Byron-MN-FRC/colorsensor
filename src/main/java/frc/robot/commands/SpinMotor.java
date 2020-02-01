@@ -13,6 +13,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 
 /**
@@ -47,7 +48,7 @@ public class SpinMotor extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-        Robot.controlPanel.spin();
+        Robot.controlPanel.spin(SmartDashboard.getNumber("motorspeed", 0));
     }
 
     // Make this return true when this Command no longer needs to run execute()
