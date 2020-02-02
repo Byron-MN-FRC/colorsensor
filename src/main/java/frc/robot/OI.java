@@ -64,7 +64,7 @@ public class OI {
 
         // SmartDashboard Buttons
         SmartDashboard.putData("Autonomous Command", new AutonomousCommand());
-        SmartDashboard.putData("spinCtrlPanel: rotate5", new spinCtrlPanel(5));
+        SmartDashboard.putData("spinCtrlPanel: rotate5", new spinCtrlPanel(1));
         SmartDashboard.putData("spintoColor", new spintoColor());
         SmartDashboard.putData("engageColorSensor", new engageColorSensor());
         SmartDashboard.putData("disengageColorSensor", new disengageColorSensor());

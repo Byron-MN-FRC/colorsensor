@@ -236,6 +236,8 @@ public class ControlPanel extends Subsystem {
       }
      prevColorStr = readColorStr;
     }
+    SmartDashboard.putString("Color Detected", readColorStr);
+
   }
 
   // readColorStr = getColorString
@@ -313,17 +315,20 @@ public Boolean targetEncoderUnits() {
 }
 
 public Boolean validColor(String colorSeen) {
-   Integer count = colorMap.get(colorSeen);
-   Boolean validNext =  validNextColor(ColorEnum.valueOf(prevColorStr), ColorEnum.valueOf(colorSeen));
-   System.out.println("Seeing:"+colorSeen + " count:"+count + " validNext:" + validNext);
-   if (count > 4 ) { //&& validNext) {
-     System.out.println("Seeing:"+colorSeen + " count:"+count);
-     clearColorMap();
-     prevColorStr = colorSeen;
-     return true;
-   }
-   colorMap.put(colorSeen, ++count);
-    return false;
+ 
+    // Integer count = colorMap.get(colorSeen);
+    // Boolean validNext =  validNextColor(ColorEnum.valueOf(prevColorStr), ColorEnum.valueOf(colorSeen));
+    // System.out.println("Seeing:"+colorSeen + " count:"+count + " validNext:" + validNext);
+    // eturn validNext;r
+    return true;
+  //  if (count > 4 ) { //&& validNext) {
+  //    System.out.println("Seeing:"+colorSeen + " count:"+count);
+  //    clearColorMap();
+  //    prevColorStr = colorSeen;
+  //    return true;
+  //  }
+  //  colorMap.put(colorSeen, ++count);
+  //   return false;
 }
 
 
