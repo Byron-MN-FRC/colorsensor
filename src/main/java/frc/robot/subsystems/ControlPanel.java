@@ -191,9 +191,25 @@ public class ControlPanel extends Subsystem {
     return false;
   }
 
+//  private boolean validColor(String colorString) {
+  //  return false;
   private boolean validColor(String colorString) {
-    return false;
-  }
+	return false;
+}
+
+private boolean validColor(String colorString) {
+	return false;
+}
+
+private boolean validColor(String colorString) {
+	return false;
+}
+
+private boolean validColor(String colorString) {
+	return false;
+}
+
+}
 
   public void setStartingPoint(Double rotations) {
     numRotations = rotations;
@@ -450,9 +466,9 @@ public class ControlPanel extends Subsystem {
       return null;
     }
 
-  }
+  {
 
-  public void clearColorMap() {
+ // public void clearColorMap() {
   }
 
 }
