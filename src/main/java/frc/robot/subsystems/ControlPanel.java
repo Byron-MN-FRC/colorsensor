@@ -216,15 +216,15 @@ public class ControlPanel extends Subsystem {
     // Use the color matcher to determine if we have a match
     ColorMatchResult match = m_colorMatcher.matchClosestColor(detectedColor);
 
-    if (match.confidence > confidence) {
+    if (match.confidence >= confidence) {
       if (match.color == kYellowTarget) {
         readColor = ControlPanelColor.Yellow;
       } else if (match.color == kBlueTarget) {
-        readColor = ControlPanelColor.Yellow;
+        readColor = ControlPanelColor.Blue;
       } else if (match.color == kGreenTarget) {
-        readColor = ControlPanelColor.Yellow;
+        readColor = ControlPanelColor.Green;
       } else if (match.color == kRedTarget) {
-        readColor = ControlPanelColor.Yellow;
+        readColor = ControlPanelColor.Red;
       }
     } else {
       System.out.print("The color match confidence (");
