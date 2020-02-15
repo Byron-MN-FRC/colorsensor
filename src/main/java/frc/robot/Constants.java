@@ -34,7 +34,7 @@ public class Constants {
      * Gains(kp, ki, kd, kf, izone, peak output);
      */
 	public static final Gains kGains = new Gains(0.2, 0.001, 0.0, 0.2, 0, 1.0);
-	public static final double kTargetEncoderUnits = 233864;//3.5 rotations
+	public static final double kTargetEncoderUnits = 263864;//3.5 rotations
 	// Speeds for catapult & aquisition
 	public static final double kUpSpeed = .7;
 	public static final double kUpTime = .45;
